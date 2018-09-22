@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% block title %}<title>Welcome</title>{% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="ui pointing menu">
+    <!-- <div class="ui top attached progress">
+            <div class="bar"></div>
+    </div> -->
+      <a class="active item">
+          Home
+      </a>
+      <a class="item" href="/about">
+          About us
+      </a>
+  </div>
+ 
+  <div class="ui segment">
+      <h1 class="ui header"><i class="cloud icon"></i>Daily Weather</h1>
+      <!-- <img class="ui fluid image" src="static/resources/welcome.jpg"> -->
+      <form name="index" method="GET" action="/search">  
+        <div class="ui fluid action input">
+            <input placeholder="Enter city name and press Enter" type="text" name="city" id="city">
+            <div class="ui button disabled" onclick="/search/">Search</div>
+        </div>
+    </form>
+    <div class="ui card fluid">
+        <div class="ui content large">
+            {% block content %}
+            {%endblock%}
+        </div>
+    </div>
+  </div>
+</body>
+</html>

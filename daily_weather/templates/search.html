@@ -1,0 +1,119 @@
+{% extends 'index.html' %}
+{% block content %}
+
+  {% if cityDetails %}
+        <div class="ui image" src="file:{{ cityDetails.current.condition.icon }}" alt="Image not available"></div>
+        <p><strong>{{ cityDetails.location.country }}</strong></p>
+        <br>
+        <p><img src="{{ cityDetails.current.condition.icon }}"/><strong>{{ cityDetails.current.condition.text }}</strong></p>  
+        <br> 
+        <p><strong><font size='20px'>{{ cityDetails.current.temp_c }}</font>&nbsp;&nbsp;Celsius</strong></p>
+        <p><strong>{{ cityDetails.location.name }},&nbsp;{{ cityDetails.location.region }}</strong></p>
+        <div class="ui raised segment">
+            <div class="ui four column grid">
+                  <div class="column">
+                        <div class="ui segment">
+                              <div class="card">
+                                    <div class="ui content">
+                                          <p><i class="wi wi-thermometer-internal">&nbsp;&nbsp;Feels like &nbsp;</i><strong>{{ cityDetails.current.feelslike_c }}</strong></p>  
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <div class="column">
+                        <div class="ui segment">
+                              <div class="card">
+                                    <div class="ui content">
+                                          <p><i class="wi wi-cloud">&nbsp;&nbsp;Clouds (%) &nbsp;</i><strong>{{ cityDetails.current.cloud  }}</strong></p>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <div class="column">
+                        <div class="ui segment">
+                              <div class="card">
+                                    <p><i class="wi wi-degrees">&nbsp;&nbsp;Wind-degree &nbsp;&nbsp;</i><strong>{{ cityDetails.current.wind_degree }}</strong></p>
+                              </div>
+                        </div>
+                  </div>
+                  <div class="column">
+                        <div class="ui segment">
+                              <div class="card">
+                                    <div class="ui content">
+                                          <p><i class="wi wi-strong-wind">&nbsp;&nbsp;Winds (kmph)&nbsp;</i><strong>{{ cityDetails.current.wind_mph  }}</strong></p>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+            <!--  -->
+            <div class="ui four column grid">
+                  <div class="column">
+                        <div class="ui segment">
+                              <div class="card">
+                                    <p><i class="wi wi-cloud-up"></i>&nbsp;&nbsp;Vision (km) &nbsp;&nbsp;<strong>{{ cityDetails.current.vis_km }}</strong></p>
+                              </div>
+                        </div>
+                  </div>
+                  <div class="column">
+                        <div class="ui segment">
+                              <div class="card">
+                                    <p><i class="wi wi-raindrops"></i>&nbsp;&nbsp;Precipitation (in) &nbsp;&nbsp;<strong>{{ cityDetails.current.precip_in }}</strong></p>
+                              </div>
+                        </div>
+                  </div>
+                  <div class="column">
+                        <div class="ui segment">
+                              <div class="card">
+                                    <p><i class="wi wi-humidity">&nbsp;&nbsp;Humidity (%)</i> &nbsp;&nbsp;<strong>{{ cityDetails.current.humidity }}</strong></p>
+                              </div>
+                        </div>
+                  </div>
+                  <div class="column">
+                        <div class="ui segment">
+                              <div class="card">
+                                     <div class="ui content">
+                                          <p><i class="wi wi-barometer">&nbsp;&nbsp;Pressure (IN)&nbsp;</i><strong>{{ cityDetails.current.pressure_in  }}</strong></p>
+                                    </div>
+                              </div>                              
+                        </div>
+                  </div>
+            </div>
+        </div>
+  {% else %}
+        <p>Please enter city </p>
+  {% endif %}
+
+
+  <div class="ui divider"></div>
+  <div class="ui segment">
+      <div class="ui two column grid">
+            <div class="column">
+                  <div class="ui segment">
+                        <div class="card">
+                              <div class="ui content">
+                                    <p>Lat :{{ cityDetails.location.lat }}</p>
+                                    <p>Lon :{{ cityDetails.location.lon }}</p>
+                                    <iframe width=500" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q={{ cityDetails.location.name }}t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                              </div>
+                        </div>      
+                  </div>
+            </div>
+            <div class="column">
+                  <div class="ui segment">
+                        <div class="card">
+                              <div class="ui content">
+                                    <p>Powered by Apixu</p>
+                                    <a href="https://play.google.com/store/apps/details?id=com.ankit.dailyweather">Get daily weather updates on your Android phone!
+                                          <br>
+                                          <i class="google play icon"></i>
+                                    </a>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</div>
+{% endblock %}
+
+

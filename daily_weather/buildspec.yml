@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - pip install --upgrade pip
+      - pip install -e .
+  pre_build:
+    commands:
+      - find . -name "*.py" -exec pylint '{}' \;
+      - cd daily_weather && python tests/test_index.py -v
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: no
